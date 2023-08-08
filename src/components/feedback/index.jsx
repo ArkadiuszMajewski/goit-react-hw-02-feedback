@@ -7,23 +7,23 @@ class FeedbackWidget extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    visible: false
+    visible: false,
   };
 
   good = e => {
     this.setState({ good: this.state.good + 1 });
     let feedback = document.getElementsByClassName('feedback');
-    console.log(feedback);
-    this.setState({visible: true})
-
+    this.setState({ visible: true });
   };
 
   neutral = () => {
     this.setState({ neutral: this.state.neutral + 1 });
+    this.setState({ visible: true });
   };
 
   bad = () => {
     this.setState({ bad: this.state.bad + 1 });
+    this.setState({ visible: true });
   };
 
   countTotalFeedback = () => {
@@ -37,7 +37,6 @@ class FeedbackWidget extends Component {
       ? `${((100 * this.state.good) / allOpinion).toFixed(2)}%`
       : `0.00%`;
   };
- 
 
   render() {
     return (
@@ -50,14 +49,24 @@ class FeedbackWidget extends Component {
         </div>
         <h2>Ststistics</h2>
         <div className="FeedbackWidget-Ststistics">
-          <span className={this.state.visible ?  '':'visible'}>Good ={this.state.good} </span>
-          <span className={this.state.visible ?  '':'visible'}>Neutral={this.state.neutral} </span>
-          <span className={this.state.visible ?  '':'visible'}>Bad={this.state.bad} </span>
-          <span className={this.state.visible ?  '':'visible'}>Total={this.countTotalFeedback()} </span>
-          <span className={this.state.visible ?  '':'visible'}>
+          <span className={this.state.visible ? '' : 'visible'}>
+            Good ={this.state.good}{' '}
+          </span>
+          <span className={this.state.visible ? '' : 'visible'}>
+            Neutral={this.state.neutral}{' '}
+          </span>
+          <span className={this.state.visible ? '' : 'visible'}>
+            Bad={this.state.bad}{' '}
+          </span>
+          <span className={this.state.visible ? '' : 'visible'}>
+            Total={this.countTotalFeedback()}{' '}
+          </span>
+          <span className={this.state.visible ? '' : 'visible'}>
             Positive Feedback={this.countPositiveFeedbackPercentage()}
           </span>
-          <span className={this.state.visible ? 'visible' : ''}>No feedback given</span>
+          <span className={this.state.visible ? 'visible' : ''}>
+            No feedback given
+          </span>
         </div>
       </div>
     );
