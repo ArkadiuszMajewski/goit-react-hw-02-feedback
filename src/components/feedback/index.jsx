@@ -14,12 +14,10 @@ class FeedbackWidget extends Component {
     const id = eve.target.id;
     if (id === '1') {
       this.setState({ good: this.state.good + 1 });
-      let feedback = document.getElementsByClassName('feedback');
       this.setState({ visible: true });
     } else if (id === '2') {
       this.setState({ neutral: this.state.neutral + 1 });
       this.setState({ visible: true });
-      let feedback = document.getElementsByClassName('feedback');
     } else if (id === '3') {
       this.setState({ bad: this.state.bad + 1 });
       this.setState({ visible: true });
@@ -78,6 +76,7 @@ class FeedbackWidget extends Component {
     );
   }
 }
+
 export default FeedbackWidget;
 
 FeedbackWidget.propTypes = {
