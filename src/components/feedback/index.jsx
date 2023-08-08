@@ -10,20 +10,20 @@ class FeedbackWidget extends Component {
     visible: false,
   };
 
-  good = e => {
-    this.setState({ good: this.state.good + 1 });
-    let feedback = document.getElementsByClassName('feedback');
-    this.setState({ visible: true });
-  };
-
-  neutral = () => {
-    this.setState({ neutral: this.state.neutral + 1 });
-    this.setState({ visible: true });
-  };
-
-  bad = () => {
-    this.setState({ bad: this.state.bad + 1 });
-    this.setState({ visible: true });
+  handlerButton = eve => {
+    const id = eve.target.id;
+    if (id === '1') {
+      this.setState({ good: this.state.good + 1 });
+      let feedback = document.getElementsByClassName('feedback');
+      this.setState({ visible: true });
+    } else if (id === '2') {
+      this.setState({ neutral: this.state.neutral + 1 });
+      this.setState({ visible: true });
+      let feedback = document.getElementsByClassName('feedback');
+    } else if (id === '3') {
+      this.setState({ bad: this.state.bad + 1 });
+      this.setState({ visible: true });
+    }
   };
 
   countTotalFeedback = () => {
@@ -43,9 +43,15 @@ class FeedbackWidget extends Component {
       <div className="FeedbackWidget">
         <h1 className="FeedbackWidget-h1">Please leave feedback</h1>
         <div>
-          <button onClick={this.good}>Good</button>
-          <button onClick={this.neutral}>Neutral</button>
-          <button onClick={this.bad}>Bad</button>
+          <button type="button" id="1" onClick={this.handlerButton}>
+            Good
+          </button>
+          <button type="button" id="2" onClick={this.handlerButton}>
+            Neutral
+          </button>
+          <button type="button" id="3" onClick={this.handlerButton}>
+            Bad
+          </button>
         </div>
         <h2>Ststistics</h2>
         <div className="FeedbackWidget-Ststistics">
